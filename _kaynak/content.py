@@ -1,0 +1,353 @@
+# -*- coding: utf-8 -*-
+"""Obruk sitesi – elle yazılmış iki dilli içerik ve yapılandırılmış veriler."""
+
+SITE = {
+    "url": "https://obruk.org",
+    "name_tr": "OBRUK Mağara Araştırma Grubu",
+    "name_en": "OBRUK Cave Research Group",
+    "short": "OBRUK",
+    "email": "ayamac@gmail.com",
+    "founder": "Ali Yamaç",
+}
+
+# ---------------------------------------------------------------- projeler
+# img: ek foto / medya anahtarı (imgmap.json içindeki anahtar)
+PROJECTS = [
+    {
+        "slug": "urgup-yeralti-yapilari-envanteri",
+        "status": "active",
+        "years": "Devam ediyor",
+        "years_en": "Ongoing",
+        "il": "Nevşehir",
+        "title": "Ürgüp Yeraltı Yapıları Envanteri",
+        "title_en": "Underground Structures Inventory of Ürgüp",
+        "partners": "Ürgüp Belediyesi",
+        "partners_en": "Municipality of Ürgüp",
+        "img": "ek foto/20241012_121327.jpg",
+        "sum": "Ürgüp Belediyesi ile imzalanan protokol kapsamında ilçe sınırları içindeki yeraltı şehirleri, yerleşimler ve tüneller belgeleniyor, haritalanıyor ve coğrafi bilgi sistemlerine işleniyor. Amaç, hızlı yapılaşma karşısında risk altındaki bu mirası kayıt altına almak ve korumaya almak.",
+        "sum_en": "Under a protocol signed with the Municipality of Ürgüp, the underground cities, rock-cut settlements and tunnels within the district are being documented, surveyed and entered into GIS — so that this heritage, threatened by rapid construction, can be recorded and protected.",
+        "reports": [],
+        "kw": ["ürgüp"],
+    },
+    {
+        "slug": "kayseri-yeralti-yapilari-envanteri",
+        "status": "long",
+        "years": "2013'ten bu yana",
+        "years_en": "Since 2013",
+        "il": "Kayseri",
+        "title": "Kayseri Yeraltı Yapıları Envanteri",
+        "title_en": "Underground Structures Inventory of Kayseri",
+        "partners": "Kayseri Büyükşehir Belediyesi, ÇEKÜL Vakfı",
+        "partners_en": "Kayseri Metropolitan Municipality, ÇEKÜL Foundation",
+        "img": "medya/2023/06/25kayseri.jpg",
+        "sum": "Başta şehir çevresi olmak üzere tüm Kayseri ilinde yeraltı şehirleri, kaya yerleşimleri, kiliseler ve güvercinlikler araştırıldı; 29'dan fazla yeraltı şehri ve sayısız kaya yerleşimi keşfedildi. Koramaz Vadisi çalışmaları vadinin UNESCO Dünya Mirası Geçici Listesi'ne girmesine katkı sağladı. Beş ara rapor yayımlandı.",
+        "sum_en": "Underground cities, rock-cut settlements, churches and dovecotes have been surveyed across the whole province of Kayseri; more than 29 underground cities and countless rock-cut settlements were discovered. Our work in the Koramaz Valley contributed to its inclusion on the UNESCO World Heritage Tentative List. Five interim reports have been published.",
+        "reports": ["KayseriYeralti", "Kayseri2AraRapor", "Kayseri3AraRapor", "Kayseri4AraRapor", "Kayseri5AraRapor"],
+        "kw": ["kayseri", "koramaz", "ağırnas", "gesi", "tomarza"],
+    },
+    {
+        "slug": "kapadokya-yeralti-sehirleri",
+        "status": "long",
+        "years": "2013 – 2015",
+        "years_en": "2013 – 2015",
+        "il": "Nevşehir",
+        "title": "Kapadokya Yeraltı Şehirleri Haritalaması",
+        "title_en": "Mapping the Underground Cities of Cappadocia",
+        "partners": "Nevşehir ve Aksaray Müze Müdürlükleri",
+        "partners_en": "Nevşehir and Aksaray Museum Directorates",
+        "img": "ek foto/20241013_121421.jpg",
+        "sum": "Turizme açık olanlar dahil hiçbirinin ayrıntılı haritası bulunmayan Kapadokya yeraltı şehirlerinden Derinkuyu, Mazıköy, Tatlarin ve Aziz Mercurius (Saratlı) çok katlı olarak ölçüldü ve haritalandı.",
+        "sum_en": "None of Cappadocia's underground cities — not even those open to tourism — had a detailed plan. Derinkuyu, Mazıköy, Tatlarin and Saint Mercurius (Saratlı) were surveyed level by level and mapped.",
+        "reports": [],
+        "kw": ["kapadokya", "derinkuyu", "nevşehir", "mercurius", "tatlarin"],
+    },
+    {
+        "slug": "gaziantep-yeralti-yapilari-envanteri",
+        "status": "done",
+        "years": "2012 – 2018",
+        "years_en": "2012 – 2018",
+        "il": "Gaziantep",
+        "title": "Gaziantep Şehri Yeraltı Yapıları Envanteri",
+        "title_en": "Underground Structures Inventory of Gaziantep",
+        "partners": "Gaziantep Büyükşehir Belediyesi, ÇEKÜL Vakfı",
+        "partners_en": "Gaziantep Metropolitan Municipality, ÇEKÜL Foundation",
+        "img": "medya/2023/06/27gaziantep.jpg",
+        "sum": "Şehir dokusu altındaki yüzlerce insan yapımı mağara, \"kastel\" adı verilen su taksim havuzları ve bunları bağlayan \"livas\" kanalları ölçüldü, haritalandı ve kentin yerüstü haritasına işlendi. Livas ve kasteller 2018'de UNESCO Dünya Mirası Geçici Listesi'ne alındı.",
+        "sum_en": "Hundreds of man-made caves beneath the old town, the water distribution chambers known as \"kastel\" and the \"livas\" channels connecting them were surveyed, mapped and overlaid onto the city map. The livas and kastels were placed on the UNESCO World Heritage Tentative List in 2018.",
+        "reports": ["Gaziantep2012", "Gaziantep-Sergi-Kitapcik"],
+        "kw": ["gaziantep", "antep", "livas", "kastel"],
+    },
+    {
+        "slug": "firat-nehri-kaya-yerlesimleri",
+        "status": "done",
+        "years": "2013 – 2019",
+        "years_en": "2013 – 2019",
+        "il": "Şanlıurfa",
+        "title": "Fırat Nehri Kaya Yerleşimleri (Halfeti – Kızılin)",
+        "title_en": "Rock-cut Settlements of the Euphrates (Halfeti – Kızılin)",
+        "partners": "",
+        "partners_en": "",
+        "img": "medya/2013/04/IMG_8670.JPG",
+        "sum": "Atatürk Barajı'nın ardından kireçtaşı içinde akan Fırat Nehri'nin iki yakasındaki doğal ve yapay mağaralar Kızılin Köyü'nden Halfeti'ye kadar tespit edildi, ölçüldü ve haritalandı.",
+        "sum_en": "Natural and artificial caves on both banks of the Euphrates, which flows through limestone below the Atatürk Dam, were located, surveyed and mapped from Kızılin village to Halfeti.",
+        "reports": ["FiratNehriRapor"],
+        "kw": ["halfeti", "fırat"],
+    },
+    {
+        "slug": "insuyu-magarasi-haritalama",
+        "status": "done",
+        "years": "2011 – 2016",
+        "years_en": "2011 – 2016",
+        "il": "Burdur",
+        "title": "İnsuyu Mağarası Haritalama Projesi",
+        "title_en": "Insuyu Cave Remapping Project",
+        "partners": "İTÜMAK, BÜMAK, ASPEG, Mağara Koruma Şubesi",
+        "partners_en": "İTÜMAK, BÜMAK, ASPEG, Cave Conservation Branch",
+        "img": "medya/2013/01/P1030595.JPG",
+        "sum": "Türkiye'nin en çok ziyaret edilen turistik mağarasının hiç olmayan tam haritası, ortak bir çalışmayla çıkarıldı. Ölçülen uzunluk 10 km'yi aştı ve İnsuyu Türkiye'nin en uzun mağarası oldu.",
+        "sum_en": "A joint project produced the first complete survey of Turkey's most visited show cave. The surveyed length passed 10 km, making Insuyu the longest known cave in Turkey.",
+        "reports": ["insuyurapor"],
+        "kw": ["insuyu", "i̇nsuyu"],
+    },
+    {
+        "slug": "kes-dagi-dudeni",
+        "status": "done",
+        "years": "2010 – 2012",
+        "years_en": "2010 – 2012",
+        "il": "Kahramanmaraş",
+        "title": "Keş Dağı Düdeni Ekspedisyonları",
+        "title_en": "Keş Mountain Sinkhole Expeditions",
+        "partners": "",
+        "partners_en": "",
+        "img": "medya/2011/07/Mağara_Giriş_Hazırlık-800.jpg",
+        "sum": "Kahramanmaraş Döngel'deki Keş Dağı Düdeni'nde üç yaz süren ekspedisyonlarla -728 m derinliğe ve 1.801 m uzunluğa ulaşıldı; düden Türkiye'nin en derin mağaraları arasına girdi. Çalışmalar National Geographic ve Atlas dergilerinde yer aldı.",
+        "sum_en": "Three summer expeditions in Keş Mountain Sinkhole (Döngel, Kahramanmaraş) reached a depth of -728 m and a length of 1,801 m, placing it among the deepest caves in Turkey. The work was featured in National Geographic and Atlas magazines.",
+        "reports": [],
+        "kw": ["keş"],
+    },
+    {
+        "slug": "kure-daglari-magaralari",
+        "status": "done",
+        "years": "2010 – 2015",
+        "years_en": "2010 – 2015",
+        "il": "Bartın",
+        "title": "Küre Dağları Milli Parkı Mağaraları",
+        "title_en": "Caves of Küre Mountains National Park",
+        "partners": "Doğa Koruma ve Milli Parklar Genel Müdürlüğü",
+        "partners_en": "General Directorate of Nature Conservation and National Parks",
+        "img": "medya/2010/06/1006_safranbolu_kizilin.JPG",
+        "sum": "Küre Dağları Milli Parkı'ndaki mağaraların envanteri Milli Parklar Genel Müdürlüğü ile işbirliği içinde tamamlandı; sonuçlar \"Caves of Küre Mountain\" raporunda yayımlandı.",
+        "sum_en": "The cave inventory of Küre Mountains National Park was completed in cooperation with the General Directorate of National Parks and published as \"Caves of Küre Mountain\".",
+        "reports": ["KureRapor"],
+        "kw": ["küre", "amasra", "bartın", "safranbolu"],
+    },
+    {
+        "slug": "kahramanmaras-kuzeyi-magaralari",
+        "status": "done",
+        "years": "2010 – 2013",
+        "years_en": "2010 – 2013",
+        "il": "Kahramanmaraş",
+        "title": "Kahramanmaraş Kuzeyi Mağaraları",
+        "title_en": "Caves of Northern Kahramanmaraş",
+        "partners": "Doğa Koruma ve Milli Parklar Genel Müdürlüğü",
+        "partners_en": "General Directorate of Nature Conservation and National Parks",
+        "img": "medya/2010/05/1005-marasUstDuden_0.jpg",
+        "sum": "Envanterimizdeki en kalabalık bölge: Kahramanmaraş'ın kuzeyindeki düdenler ve mağaralar keşfedilip haritalandı, bölgenin hidrojeolojisi incelendi.",
+        "sum_en": "The richest area in our inventory: the sinkholes and caves of northern Kahramanmaraş were explored and mapped, and the region's hydrogeology studied.",
+        "reports": ["KahramanmarasRapor"],
+        "kw": ["maraş", "kahramanmaraş", "söğütova"],
+    },
+    {
+        "slug": "ayasofya-topkapi-yeralti",
+        "status": "done",
+        "years": "2009",
+        "years_en": "2009",
+        "il": "İstanbul",
+        "title": "Ayasofya ve Topkapı Sarayı Yeraltı Yapıları",
+        "title_en": "Underground Structures of Hagia Sophia and Topkapı Palace",
+        "partners": "Proje yürütücüsü Dr. Çiğdem Aygün",
+        "partners_en": "Project leader Dr. Çiğdem Aygün",
+        "img": None,
+        "sum": "Grup üyeleri, Dr. Çiğdem Aygün yürütücülüğündeki projede Ayasofya ve Topkapı Sarayı altındaki yapıları araştırdı. Çalışma National Geographic dergisinde yer aldı.",
+        "sum_en": "Group members investigated the structures beneath Hagia Sophia and Topkapı Palace in a project led by Dr. Çiğdem Aygün. The work was featured in National Geographic.",
+        "reports": [],
+        "kw": ["ayasofya"],
+    },
+]
+
+# ---------------------------------------------------------------- raporlar
+REPORTS = [
+    ("FiratNehriRapor", "Fırat Kaya Yerleşimleri", "Rock-cut Settlements of the Euphrates", "2019-06", "Şanlıurfa"),
+    ("Kayseri5AraRapor", "Kayseri Beşinci Ara Rapor – Koramaz Vadisi", "Kayseri 5th Interim Report – Koramaz Valley", "2019-04", "Kayseri"),
+    ("Kayseri4AraRapor", "Kayseri Dördüncü Ara Rapor", "Kayseri 4th Interim Report", "2018-02", "Kayseri"),
+    ("Kayseri3AraRapor", "Kayseri Üçüncü Ara Rapor", "Kayseri 3rd Interim Report", "2017-07", "Kayseri"),
+    ("Kayseri2AraRapor", "Kayseri İkinci Ara Rapor", "Kayseri 2nd Interim Report", "2015-09", "Kayseri"),
+    ("KureRapor", "Caves of Küre Mountain", "Caves of Küre Mountain", "2015-07", "Bartın / Kastamonu"),
+    ("KayseriYeralti", "Kayseri Birinci Ara Rapor", "Kayseri 1st Interim Report", "2014-08", "Kayseri"),
+    ("Gaziantep-Sergi-Kitapcik", "\"Altı da Üstü de Kültür – Gaziantep\" Fotoğraf Sergisi", "\"Culture Above and Below – Gaziantep\" Photo Exhibition", "2013-03", "Gaziantep"),
+    ("AyvainiAtlas", "Ayvaini Mağarası Harita Atlası", "Ayvaini Cave Map Atlas", "2013-02", "Bursa"),
+    ("Gaziantep2012", "Gaziantep 2012 – Yeraltı Yapıları Raporu", "Gaziantep 2012 – Underground Structures Report", "2013-02", "Gaziantep"),
+    ("KahramanmarasRapor", "Kahramanmaraş Bölgesi Çalışmaları Raporu", "Kahramanmaraş Region Report", "2012-11", "Kahramanmaraş"),
+    ("insuyurapor", "İnsuyu Mağarası Raporu", "Insuyu Cave Report", "2012-11", "Burdur"),
+]
+
+# ---------------------------------------------------------------- yayınlar
+# (dosya adı kökü, başlık, yıl, etkinlik/dergi)
+POSTERS = [
+    ("arastirmastandart", "Mağara Araştırmalarında Standart Oluşturulması", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("ciftharitalar", "Çift Haritalar ve TAY Projesi", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("Kars", "Kars Borluk Vadisi Mağaraları", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("KesDudeni", "Keş Dağı Düdeni", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("Safrabolu", "Safranbolu Kanyon ve Mağaraları", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("Ayvaini2", "Claude Chabert ve Ayvaini", "2011", "5. Ulusal Speleoloji Sempozyumu"),
+    ("SafranboluMess3", "Canyons and Caves of Safranbolu", "2011", "MESS 3, Lübnan"),
+    ("Artificial-Cavities-of-Gaziantep", "Artificial Cavities of Gaziantep", "2013", "16th International Congress of Speleology, Brno"),
+    ("Kes-Mountain-Sinkhole", "Keş Mountain Sinkhole", "2013", "16th ICS, Brno"),
+    ("AyvainiPoster", "Claude Chabert, Ayvaini Cave", "2013", "16th ICS, Brno"),
+    ("doublemaps", "Double Cave Maps of Turkey", "2013", "16th ICS, Brno"),
+    ("Strabo", "Anatolian Caves in Strabo's Geographica", "2013", "16th ICS, Brno"),
+    ("insuyu", "Remapping of Insuyu Cave", "2013", "16th ICS, Brno"),
+    ("birkleyn", "Oldest Documented Caves of the World: Birkleyn Caves", "2013", "16th ICS, Brno"),
+    ("Underground-Hydraulic-Structures-of-Gaziantep", "Underground Hydraulic Structures of Gaziantep", "2013", "16th ICS, Brno"),
+    ("GesiHypogea15", "Underground Structures of Gesi", "2015", "Hypogea 2015, Roma"),
+    ("Kayseri", "Underground Structures of Kayseri", "2015", "Hypogea 2015, Roma"),
+    ("GuvercinlikHypogea15", "Güvercinlik Valley", "2015", "Hypogea 2015, Roma"),
+    ("Halfeti", "Rock-cut Structures of Halfeti", "2015", "Hypogea 2015, Roma"),
+    ("Cappadocia-HYPOGEA-2015", "Cappadocia (Yamaç & Tok)", "2015", "Hypogea 2015, Roma"),
+    ("Cappadoce", "Cappadoce", "2017", "AFTES 2017"),
+    ("PosterSigeaRoma", "SIGEA Posteri", "2016", "SIGEA, Roma"),
+    ("AgirnasHypogea17", "Ağırnas Underground City", "2017", "Hypogea 2017, Kapadokya"),
+    ("Doganli-Hypogea17", "Doğanlı Underground City", "2017", "Hypogea 2017, Kapadokya"),
+    ("Cave-Dwellings-Euphrates-River", "Cave Dwellings along the Euphrates River", "2017", "Hypogea 2017, Kapadokya"),
+    ("Underground-Quarries-of-Gaziantep", "Underground Quarries of Gaziantep", "2017", "Hypogea 2017, Kapadokya"),
+    ("HYPOGEA_2017_PROCEEDINGS", "Hypogea 2017 Bildiriler Kitabı", "2017", "Hypogea 2017, Kapadokya"),
+    ("Gedifi", "Gedifi İni", "2018", "MESS 4, Antalya"),
+    ("Sahmelik", "Şahmelik", "2018", "MESS 4, Antalya"),
+    ("Sille", "Sille", "2018", "MESS 4, Antalya"),
+]
+PRESS = [
+    ("NGkes-dudeni", "Keş Dağı Düdeni", "2010", "National Geographic Türkiye"),
+    ("ngayasofya", "Ayasofya'nın Altında", "2010", "National Geographic Türkiye"),
+    ("NgKure", "Küre Dağları", "2010", "National Geographic Türkiye"),
+    ("ATLAS-Keş-2011", "Keş Dağı Düdeni", "2011", "Atlas"),
+    ("AtlasDergisi6-2012", "Gaziantep Projesi", "2012", "Atlas"),
+    ("Gaziantep-Life", "Gaziantep'in Altı", "2012", "Gaziantep Life"),
+    ("Pegasus-Dergisi9-2012", "Gaziantep Projesi", "2012", "Pegasus"),
+    ("ATLAS-Halfeti", "Halfeti", "2013", "Atlas"),
+    ("ATLAS-BARTIN-Nis-2014", "Amasra Mağaraları", "2014", "Atlas"),
+    ("ATLAS-Kayseri-ek-2014", "Kayseri Eki", "2014", "Atlas"),
+    ("ATLAS-Nis-2015", "Döşemealtı", "2015", "Atlas"),
+    ("Operaipogea215", "Belağası", "2015", "Opera Ipogea"),
+    ("Operaipogea116", "Doğanlı", "2016", "Opera Ipogea"),
+    ("Operaipogea216", "Mimar Sinan", "2016", "Opera Ipogea"),
+    ("Golgoli2016", "Golgoli", "2016", "Opera Ipogea"),
+    ("Atlas-Şubat-2017-Tilkiler", "Tilkiler Mağarası", "2017", "Atlas"),
+    ("Magma-52017", "Tomarza", "2017", "Magma"),
+    ("Opera1-2018", "Tomarza", "2018", "Opera Ipogea"),
+    ("Atlas-Dergisinde-Koramaz", "Koramaz Vadisi", "2018", "Atlas"),
+    ("Magma-Gaziantep", "Gaziantep", "2018", "Magma"),
+    ("Magma-Agirnas", "Ağırnas", "2018", "Magma"),
+    ("ATLAS-kure", "Küre", "", "Atlas"),
+    ("ATLAS-Hasankeyf", "Hasankeyf", "", "Atlas"),
+    ("ATLAS-Kırkgözler", "Kırkgözler", "", "Atlas"),
+    ("ATLAS-Yeşilgöz", "Yeşilgöz", "", "Atlas"),
+    ("AGOS-Roportaj", "Röportaj", "", "Agos"),
+]
+OTHER = [
+    ("obruk2010-2014", "OBRUK 2010–2014 çalışmaları", ""),
+    ("ÇİFT-HARİTALAR", "Çift Haritalar", ""),
+    ("YerinAltindakiSehir", "Yerin Altındaki Şehir", ""),
+    ("SinanUndergroundCity", "Mimar Sinan Underground City", ""),
+    ("Kirkmerdiven-Underground-City", "Kırkmerdiven Underground City", ""),
+    ("SanMercurius", "Saint Mercurius", ""),
+    ("Koramaz", "Koramaz", ""),
+    ("WaterTunnels", "Water Tunnels", ""),
+    ("dovecotesandcave", "Dovecotes and Caves", ""),
+    ("Halys2014", "Halys 2014", "2014"),
+    ("Maras", "Maraş", ""),
+    ("Sarpunalinca", "Sarpunalınca Mağarası", ""),
+]
+MAGAZINE = [
+    ("obruk1", 1, "2009"), ("obruk2", 2, "2010"), ("obruk3", 3, "2010"), ("obruk4", 4, "2011"),
+    ("obruk5", 5, "2012"), ("obruk6", 6, "2013"), ("obruk7", 7, "2014"),
+]
+
+# ---------------------------------------------------------------- il koordinatları
+IL = {
+    "Aksaray": (38.37, 34.03), "Antalya": (36.89, 30.71), "Bartın": (41.63, 32.34), "Bartin": (41.63, 32.34),
+    "Bilecik": (40.14, 29.98), "Burdur": (37.72, 30.29), "Diyarbakır": (37.91, 40.24), "Gaziantep": (37.07, 37.38),
+    "Kahramanmaraş": (37.58, 36.94), "Karabük": (41.20, 32.62), "Karaman": (37.18, 33.22), "Kastamonu": (41.38, 33.78),
+    "Kocaeli": (40.77, 29.94), "Muğla": (37.22, 28.36), "Nevşehir": (38.62, 34.71), "Sakarya": (40.78, 30.40),
+    "Yalova": (40.65, 29.27), "İzmir": (38.42, 27.14), "Şanlıurfa": (37.16, 38.79), "Kayseri": (38.72, 35.49),
+    "İstanbul": (41.01, 28.98), "Kars": (40.60, 43.10), "Ardahan": (41.11, 42.70), "Balıkesir": (39.65, 27.88),
+    "Konya": (37.87, 32.48), "Zonguldak": (41.45, 31.79), "Mersin": (36.80, 34.63),
+}
+
+MEMBER_NORMALIZE = {
+    "Murat Egrikavuk": "Murat Eğrikavuk", "Murat E.": "Murat Eğrikavuk", "Nuray A.": "Nuray Ada",
+    "E. Tok": "Ezgi Tok",
+}
+MEMBER_EXCLUDE = {"-", "Arda", "C. Chabert", "Fadi Nader", ""}
+
+# ---------------------------------------------------------------- arayüz metinleri
+UI = {
+    "tr": {
+        "lang": "tr", "locale": "tr_TR", "skip": "İçeriğe geç",
+        "nav": [("hakkimizda", "Hakkımızda"), ("magaracilar", "Mağaracılar"), ("arastirmalar", "Araştırmalar"),
+                ("raporlar", "Raporlar"), ("yayinlar", "Yayınlar"), ("arsiv", "Arşiv"), ("iletisim", "İletişim")],
+        "archive_menu": [("magara-envanteri", "Mağara Envanteri"), ("saha-gunlugu", "Saha Günlüğü"),
+                         ("bilgi-bankasi", "Bilgi Bankası"), ("koruma", "Koruma ve Etik"),
+                         ("magaracilik-sinavi", "Mağaracılık Sınavı")],
+        "tagline": "Mağara Araştırma Grubu",
+        "read_more": "Devamını oku", "all_posts": "Tüm saha günlüğü", "download": "PDF indir",
+        "pages": "sayfa", "back": "Geri", "search": "Ara…", "months": ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+        "footer_note": "OBRUK, mağaracıları bir araya getiren, kâr amacı gütmeyen gönüllü bir sivil oluşumdur.",
+        "switch": ("EN", "English"),
+    },
+    "en": {
+        "lang": "en", "locale": "en_GB", "skip": "Skip to content",
+        "nav": [("about", "About"), ("cavers", "Cavers"), ("research", "Research"),
+                ("reports", "Reports"), ("publications", "Publications"), ("inventory", "Cave Inventory"), ("contact", "Contact")],
+        "archive_menu": [],
+        "tagline": "Cave Research Group",
+        "read_more": "Read more", "all_posts": "Field journal (Turkish)", "download": "Download PDF",
+        "pages": "pages", "back": "Back", "search": "Search…", "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "footer_note": "OBRUK is a volunteer, non-profit civic group of cavers.",
+        "switch": ("TR", "Türkçe"),
+    },
+}
+
+ABOUT_TR = """
+<p class="lead">OBRUK Mağara Araştırma Grubu (o'mag); Türkiye'nin doğal mağaralarını ve insan yapımı yeraltı yapılarını keşfeden, ölçen, haritalayan ve sonuçlarını yayımlayan gönüllü mağaracıların oluşturduğu bir sivil oluşumdur.</p>
+<p>Grup, farklı kulüp ve derneklerden gelen deneyimli mağaracıları ortak bir anlayış etrafında bir araya getirir: titiz bilimsel araştırma, sonuçların zamanında yayımlanması, doğaya ve mirasa saygı. OBRUK kâr amacı gütmez; çalışmalar üyelerin emeği ve katkılarıyla, kamu kurumları ve vakıflarla yapılan iş birlikleriyle yürütülür.</p>
+<p>2008'de İstanbul'da kurulan grup, ertesi yıl yayın hayatına başlayan <strong>OBRUK Dergisi</strong> ile Türkiye'de mağaracılık alanındaki tek süreli yayını çıkarmaya başladı. Grup o günden bu yana Anadolu'nun dört bir yanında mağaralar keşfetti ve haritaladı; yeraltı şehirleri, kaya yerleşimleri ve tarihi su yapıları üzerine Türkiye'nin en kapsamlı envanter çalışmalarından bazılarını yürüttü.</p>
+"""
+ABOUT_EN = """
+<p class="lead">The OBRUK Cave Research Group (o'mag) is a volunteer civic group of cavers who explore, survey, map and publish Turkey's natural caves and man-made underground structures.</p>
+<p>The group brings together experienced cavers from different clubs and associations around a shared philosophy: thorough scientific research, timely publication of results, and respect for nature and heritage. OBRUK is non-profit; its work is carried out through the effort and contributions of its members and in partnership with public institutions and foundations.</p>
+<p>Founded in Istanbul in 2008, the group began publishing <strong>OBRUK Magazine</strong> the following year — Turkey's only periodical dedicated to caving. Since then the group has discovered and mapped caves across Anatolia and carried out some of the most comprehensive inventories of underground cities, rock-cut settlements and historic water systems in Turkey.</p>
+"""
+
+PRINCIPLES = [
+    ("Önce belge", "Documentation first", "Bir mağaranın haritası bile yayımlanmaya değerdir. Ölçülen her şey kayda geçmeli ve araştırmacıların erişimine açılmalıdır.", "Even a single cave map deserves to be published. Everything surveyed must be recorded and made available to researchers."),
+    ("Koruma", "Conservation", "Mağaralar ve yeraltı yapıları geri getirilemez. Bıraktığımız tek iz, ölçüm istasyonlarımızdır.", "Caves and underground structures cannot be restored once lost. The only trace we leave is our survey stations."),
+    ("Paylaşım", "Sharing", "OBRUK Dergisi 3. sayısından itibaren tüm mağaracılık gruplarının çalışmalarına açıktır.", "Since its third issue, OBRUK Magazine has been open to the work of all caving groups."),
+    ("İş birliği", "Cooperation", "Belediyeler, müze müdürlükleri, vakıflar ve yurtdışındaki mağaracılarla ortak projeler yürütürüz.", "We run joint projects with municipalities, museum directorates, foundations and cavers from abroad."),
+]
+
+TIMELINE = [
+    ("2008", "OBRUK Mağara Araştırma Grubu İstanbul'da kuruldu.", "The OBRUK Cave Research Group was founded in Istanbul."),
+    ("2009", "OBRUK Dergisi'nin ilk sayısı yayımlandı. Grup üyeleri Ayasofya ve Topkapı Sarayı yeraltı yapılarını araştırdı.", "First issue of OBRUK Magazine. Members investigated the underground structures of Hagia Sophia and Topkapı Palace."),
+    ("2010", "Keş Dağı Düdeni ekspedisyonları ve Kahramanmaraş çalışmaları başladı. OBRUK Dergisi 3. sayısıyla bağımsız bir yayın oldu.", "Keş Mountain Sinkhole expeditions and the Kahramanmaraş surveys began. OBRUK Magazine became an independent publication with its third issue."),
+    ("2011", "İnsuyu Mağarası ortak haritalama projesi başlatıldı; 5. Ulusal Speleoloji Sempozyumu'nda grup çok sayıda bildiri ve poster sundu.", "The joint Insuyu Cave remapping project started; the group presented numerous papers and posters at the 5th National Speleology Symposium."),
+    ("2012", "Gaziantep Yeraltı Yapıları Envanteri projesi başladı.", "The Gaziantep Underground Structures Inventory began."),
+    ("2013", "16. Uluslararası Speleoloji Kongresi'nde (Brno) 8 bildiri ve poster. Kapadokya yeraltı şehirlerinin haritalanması ve Kayseri envanteri başladı.", "8 papers at the 16th International Congress of Speleology (Brno). Mapping of Cappadocian underground cities and the Kayseri inventory began."),
+    ("2016", "İnsuyu'da ölçülen uzunluk 10.000 metreyi geçti.", "The surveyed length of Insuyu passed 10,000 metres."),
+    ("2017", "Uluslararası Hypogea 2017 kongresi, organizasyonu tümüyle OBRUK tarafından üstlenilerek Ürgüp'te yapıldı; 9 ülkeden bilim insanı katıldı.", "The international Hypogea 2017 congress, organised entirely by OBRUK, was held in Ürgüp with scientists from 9 countries."),
+    ("2018", "Gaziantep livas ve kastelleri UNESCO Dünya Mirası Geçici Listesi'ne girdi.", "Gaziantep's livas and kastels were placed on the UNESCO World Heritage Tentative List."),
+    ("2020", "Koramaz Vadisi UNESCO Dünya Mirası Geçici Listesi'ne girdi.", "The Koramaz Valley was placed on the UNESCO World Heritage Tentative List."),
+    ("Bugün", "Ürgüp Belediyesi ile Ürgüp Yeraltı Yapıları Envanteri protokolü imzalandı; saha çalışmaları sürüyor.", "A protocol was signed with the Municipality of Ürgüp for the Underground Structures Inventory of Ürgüp; fieldwork continues."),
+]
+
+# Harita arşivinde çizer olarak geçmeyen üyeler
+EXTRA_MEMBERS = ["Bilgin Yazlık", "Roberto Bixio", "Eric Gilli"]
