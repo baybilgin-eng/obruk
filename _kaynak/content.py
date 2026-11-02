@@ -40,9 +40,9 @@ PROJECTS = [
         "partners": "Kayseri Büyükşehir Belediyesi, ÇEKÜL Vakfı",
         "partners_en": "Kayseri Metropolitan Municipality, ÇEKÜL Foundation",
         "img": "medya/2023/06/25kayseri.jpg",
-        "sum": "Başta şehir çevresi olmak üzere tüm Kayseri ilinde yeraltı şehirleri, kaya yerleşimleri, kiliseler ve güvercinlikler araştırıldı; 29'dan fazla yeraltı şehri ve sayısız kaya yerleşimi keşfedildi. Koramaz Vadisi çalışmaları vadinin UNESCO Dünya Mirası Geçici Listesi'ne girmesine katkı sağladı. Beş ara rapor yayımlandı.",
-        "sum_en": "Underground cities, rock-cut settlements, churches and dovecotes have been surveyed across the whole province of Kayseri; more than 29 underground cities and countless rock-cut settlements were discovered. Our work in the Koramaz Valley contributed to its inclusion on the UNESCO World Heritage Tentative List. Five interim reports have been published.",
-        "reports": ["KayseriYeralti", "Kayseri2AraRapor", "Kayseri3AraRapor", "Kayseri4AraRapor", "Kayseri5AraRapor"],
+        "sum": "Başta şehir çevresi olmak üzere tüm Kayseri ilinde yeraltı şehirleri, kaya yerleşimleri, kiliseler ve güvercinlikler araştırıldı; 29'dan fazla yeraltı şehri ve sayısız kaya yerleşimi keşfedildi. Koramaz Vadisi çalışmaları vadinin UNESCO Dünya Mirası Geçici Listesi'ne girmesine katkı sağladı. Yedi ara rapor yayımlandı.",
+        "sum_en": "Underground cities, rock-cut settlements, churches and dovecotes have been surveyed across the whole province of Kayseri; more than 29 underground cities and countless rock-cut settlements were discovered. Our work in the Koramaz Valley contributed to its inclusion on the UNESCO World Heritage Tentative List. Seven interim reports have been published.",
+        "reports": ["KayseriYeralti", "Kayseri2AraRapor", "Kayseri3AraRapor", "Kayseri4AraRapor", "Kayseri5AraRapor", "Kayseri6AraRapor", "Kayseri7AraRapor"],
         "kw": ["kayseri", "koramaz", "ağırnas", "gesi", "tomarza"],
     },
     {
@@ -177,6 +177,8 @@ PROJECTS = [
 
 # ---------------------------------------------------------------- raporlar
 REPORTS = [
+    ("Kayseri7AraRapor", "Kayseri Yedinci Ara Rapor", "Kayseri 7th Interim Report", "2025-09", "Kayseri"),
+    ("Kayseri6AraRapor", "Kayseri Altıncı Ara Rapor", "Kayseri 6th Interim Report", "2022-12", "Kayseri"),
     ("FiratNehriRapor", "Fırat Kaya Yerleşimleri", "Rock-cut Settlements of the Euphrates", "2019-06", "Şanlıurfa"),
     ("Kayseri5AraRapor", "Kayseri Beşinci Ara Rapor – Koramaz Vadisi", "Kayseri 5th Interim Report – Koramaz Valley", "2019-04", "Kayseri"),
     ("Kayseri4AraRapor", "Kayseri Dördüncü Ara Rapor", "Kayseri 4th Interim Report", "2018-02", "Kayseri"),
@@ -320,12 +322,12 @@ UI = {
 ABOUT_TR = """
 <p class="lead">OBRUK Mağara Araştırma Grubu (o'mag); Türkiye'nin doğal mağaralarını ve insan yapımı yeraltı yapılarını keşfeden, ölçen, haritalayan ve sonuçlarını yayımlayan gönüllü mağaracıların oluşturduğu bir sivil oluşumdur.</p>
 <p>Grup, farklı kulüp ve derneklerden gelen deneyimli mağaracıları ortak bir anlayış etrafında bir araya getirir: titiz bilimsel araştırma, sonuçların zamanında yayımlanması, doğaya ve mirasa saygı. OBRUK kâr amacı gütmez; çalışmalar üyelerin emeği ve katkılarıyla, kamu kurumları ve vakıflarla yapılan iş birlikleriyle yürütülür.</p>
-<p>2008'de İstanbul'da kurulan grup, ertesi yıl yayın hayatına başlayan <strong>OBRUK Dergisi</strong> ile Türkiye'de mağaracılık alanındaki tek süreli yayını çıkarmaya başladı. Grup o günden bu yana Anadolu'nun dört bir yanında mağaralar keşfetti ve haritaladı; yeraltı şehirleri, kaya yerleşimleri ve tarihi su yapıları üzerine Türkiye'nin en kapsamlı envanter çalışmalarından bazılarını yürüttü.</p>
+<p>2008'de İstanbul'da kurulan grup, ertesi yıl yayın hayatına başlayan <strong>OBRUK Dergisi</strong> ile mağara araştırmalarının sonuçlarını düzenli olarak yayımlamaya başladı. Grup o günden bu yana Anadolu'nun dört bir yanında mağaralar keşfetti ve haritaladı; yeraltı şehirleri, kaya yerleşimleri ve tarihi su yapıları üzerine Türkiye'nin en kapsamlı envanter çalışmalarından bazılarını yürüttü.</p>
 """
 ABOUT_EN = """
 <p class="lead">The OBRUK Cave Research Group (o'mag) is a volunteer civic group of cavers who explore, survey, map and publish Turkey's natural caves and man-made underground structures.</p>
 <p>The group brings together experienced cavers from different clubs and associations around a shared philosophy: thorough scientific research, timely publication of results, and respect for nature and heritage. OBRUK is non-profit; its work is carried out through the effort and contributions of its members and in partnership with public institutions and foundations.</p>
-<p>Founded in Istanbul in 2008, the group began publishing <strong>OBRUK Magazine</strong> the following year — Turkey's only periodical dedicated to caving. Since then the group has discovered and mapped caves across Anatolia and carried out some of the most comprehensive inventories of underground cities, rock-cut settlements and historic water systems in Turkey.</p>
+<p>Founded in Istanbul in 2008, the group began publishing <strong>OBRUK Magazine</strong> the following year, a periodical that regularly publishes the results of cave research. Since then the group has discovered and mapped caves across Anatolia and carried out some of the most comprehensive inventories of underground cities, rock-cut settlements and historic water systems in Turkey.</p>
 """
 
 PRINCIPLES = [
