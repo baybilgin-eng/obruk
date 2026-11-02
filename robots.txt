@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://obruk.org/sitemap.xml
+Sitemap: https://www.obruk.org/sitemap.xml

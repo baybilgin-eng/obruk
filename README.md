@@ -18,12 +18,18 @@ Klasördeki `index.html` dosyasına çift tıklayınca bazı bağlantılar klas�
 2. Depo → Settings → Pages → Source: *Deploy from a branch*, Branch: `main` / `/ (root)` → Save.
 3. Birkaç dakika sonra site `https://KULLANICI.github.io/obruk-site/` adresinde açılır. Tüm bağlantılar göreli olduğu için alt klasörde de çalışır.
 
-## obruk.org'a bağlama (deneme bitince)
-1. Settings → Pages → Custom domain: `obruk.org` yazıp kaydedin (depoya `CNAME` dosyası eklenir). *Enforce HTTPS* kutusunu işaretleyin.
-2. Alan adı sağlayıcısının DNS panelinde:
-   - `@` için 4 adet A kaydı: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `www` için CNAME: `KULLANICI.github.io`
-3. Google Search Console'da `obruk.org` mülkünü doğrulayıp `https://obruk.org/sitemap.xml` adresini gönderin.
+## www.obruk.org'a bağlama
+Depoda `CNAME` dosyası (`www.obruk.org`) hazır; site haritası, kanonik adresler ve paylaşım etiketleri `https://www.obruk.org` adresine göre üretilir.
+1. Alan adı sağlayıcısının DNS panelinde:
+   - `www` için **CNAME**: `baybilgin-eng.github.io`
+   - `@` (obruk.org) için 4 adet **A** kaydı: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` — böylece `obruk.org` otomatik olarak `www.obruk.org`'a yönlenir.
+   - İsteğe bağlı IPv6 (AAAA): `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - Eski barındırma firmasına ait A / AAAA / CNAME kayıtlarını silin. **MX (e-posta) ve TXT kayıtlarına dokunmayın.**
+2. GitHub → Settings → Pages → Custom domain: `www.obruk.org` → Save. DNS kontrolü yeşile dönünce **Enforce HTTPS** kutusunu işaretleyin (sertifika birkaç dakika–24 saat sürebilir).
+3. Önerilir: GitHub → Settings (hesap) → Pages → *Verified domains* bölümünden `obruk.org`'u TXT kaydıyla doğrulayın (alan adının başkası tarafından ele geçirilmesini önler).
+4. Google Search Console'da `obruk.org` alan mülkünü doğrulayıp `https://www.obruk.org/sitemap.xml` adresini gönderin.
+
+Eski WordPress adresleri korunur: yazılar aynı adreslerinde; `/node/…`, `/tr/…` ve taşınan sayfalar yönlenir; `wp-content/uploads/…` altındaki eski PDF ve görsel bağlantıları 404 sayfası üzerinden yeni yerlerine otomatik yönlenir.
 
 ## İçerik güncelleme
 Yeni rapor / proje / üye eklemek için `_kaynak/content.py` dosyasındaki listeleri düzenleyip `python3 build.py` çalıştırmak yeterli (betik, `obruk_icerik` klasörünü okur; yolları dosyanın başındaki `SRC` / `OUT` değişkenlerinden ayarlayın).

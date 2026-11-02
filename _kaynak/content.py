@@ -2,7 +2,7 @@
 """Obruk sitesi – elle yazılmış iki dilli içerik ve yapılandırılmış veriler."""
 
 SITE = {
-    "url": "https://obruk.org",
+    "url": "https://www.obruk.org",
     "name_tr": "OBRUK Mağara Araştırma Grubu",
     "name_en": "OBRUK Cave Research Group",
     "short": "OBRUK",

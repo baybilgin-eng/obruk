@@ -34,7 +34,11 @@ def title_case(t):
         # o'mag
         if lw.startswith("o'mag"): out.append(lw); continue
         out.append("-".join(tr_upper_first(p) for p in lw.split("-")))
-    return " ".join(out)
+    r = " ".join(out)
+    for x, y in TITLE_FIX.items(): r = r.replace(x, y)
+    return r
+TITLE_FIX = {"Natıonal": "National", "Geographıc": "Geographic", "Lıfe": "Life", "Vıdeo": "Video", "Ekspedısyonu": "Ekspedisyonu",
+             "Kayserı": "Kayseri", "Geyık": "Geyik", "Gazıantep": "Gaziantep", "Calısması": "Çalışması", "Insuyu": "İnsuyu"}
 
 def slugify(s):
     s = s.translate(str.maketrans("çğıöşüÇĞİÖŞÜ", "cgiosuCGIOSU")).lower()
@@ -127,6 +131,7 @@ def md_to_html(text, page_path):
     h = re.sub(r'(src|href)="([^"]+)"', fix_src, h)
     # ölü linkleri metne çevir
     h = re.sub(r'<img[^>]*data-dead="1"[^>]*>', "", h)
+    h = re.sub(r'<img[^>]*src="http://[^"]*"[^>]*>', "", h)
     h = re.sub(r'<a href="[^"]+\.(?:mp4|mov)">(.*?)</a>', r"\1", h, flags=re.S | re.I)
     h = re.sub(r'<a href="#" data-dead="1">(.*?)</a>', r"\1", h, flags=re.S)
     h = re.sub(r"<p>\s*</p>", "", h)
@@ -644,8 +649,10 @@ def build_journal(posts):
 <section class="sec"><div class="wrap"><div class="filters"><input type="search" id="j-q" placeholder="Yazılarda ara…" aria-label="Yazılarda ara"><div class="chips-row" id="j-k">{kinds}</div><div class="chips-row" id="j-y">{chips}</div></div><div class="grid g3" id="journal">{cards}</div><p class="meta" id="j-empty" hidden>Eşleşen yazı bulunamadı.</p></div></section>'''
     write(path, page("tr", path, "Saha Günlüğü", body, desc="OBRUK Mağara Araştırma Grubu'nun 2009–2021 saha çalışmaları, ekspedisyonları ve köşe yazıları arşivi.", current="saha-gunlugu"))
     # tekil yazılar
+    tcount = Counter(p["title"] for p in posts)
     for i, p in enumerate(posts):
         pp = p["slug"] + "/"
+        head_title = p["title"] + (f" ({fmt_date(p['date'])})" if tcount[p["title"]] > 1 else "")
         h = md_to_html(p["body"], pp)
         prev = posts[i + 1] if i + 1 < len(posts) else None
         nxt = posts[i - 1] if i > 0 else None
@@ -658,7 +665,7 @@ def build_journal(posts):
                   "author": {"@type": "Organization", "name": SITE["name_tr"]}, "publisher": {"@type": "Organization", "name": SITE["name_tr"], "logo": {"@type": "ImageObject", "url": SITE["url"] + "/img/logo.png"}},
                   "mainEntityOfPage": SITE["url"] + "/" + pp}
         if cover: jsonld["image"] = SITE["url"] + "/" + cover["src"]
-        write(pp, page("tr", pp, p["title"], art, desc=excerpt(h, 155), current="saha-gunlugu", og_img=cover["src"] if cover else None, jsonld=jsonld))
+        write(pp, page("tr", pp, head_title, art, desc=excerpt(h, 155), current="saha-gunlugu", og_img=cover["src"] if cover else None, jsonld=jsonld))
 
 GROUPS = {
     "bilgi-bankasi": ("Bilgi Bankası", "Mağaracılık üzerine sık sorulan sorular, rekorlar, malzeme önerileri, kütüphane ve nostalji yazıları.",
@@ -758,12 +765,28 @@ def build_redirects():
     return n
 
 def build_404():
-    body = f'<section class="page-head"><div class="wrap"><p class="kicker">404</p><h1>Bu galeri haritada yok</h1><p class="lead">Aradığınız sayfa taşınmış ya da hiç ölçülmemiş olabilir. <a href="/">Ana sayfaya dönün</a> veya <a href="/saha-gunlugu/">saha günlüğünde</a> arayın.</p></div></section>'
-    h = page("tr", "404.html", "Sayfa bulunamadı", body)
+    m = {}
+    for r in csv.DictReader(open(SRC + "veri/pdf_katalogu.csv", encoding="utf-8-sig")):
+        stem = os.path.splitext(os.path.basename(r["yeni_dosya"]))[0]
+        p = pdf(stem)
+        if not p: continue
+        for old in [r["eski_yol"]] + [x for x in r["atilan_kopyalar"].split(";") if x.strip()]:
+            m["wp-content/uploads/" + old.strip()] = p["path"]
+    for k, v in IMG.items():
+        if k.startswith("medya/"):
+            m["wp-content/uploads/" + k[6:]] = v["src"]
+    for r in REPORTS:
+        p = pdf(r[0])
+    mp = json.dumps(m, ensure_ascii=False)
+    js = """<script>(function(){var M=""" + mp + """;var p=decodeURIComponent(location.pathname).replace(/^\\/+/,"");
+var c=[p,p.replace(/^tr\\//,""),p.replace(/\\/$/,"")];for(var i=0;i<c.length;i++){if(M[c[i]]){location.replace("/"+M[c[i]]);return}}
+if(/^tr\\//.test(p)){location.replace("/"+p.replace(/^tr\\//,""));}})();</script>"""
+    body = f'<section class="page-head"><div class="wrap"><p class="kicker">404</p><h1>Bu galeri haritada yok</h1><p class="lead">Aradığınız sayfa taşınmış ya da hiç ölçülmemiş olabilir. <a href="./">Ana sayfaya dönün</a> veya <a href="saha-gunlugu/">saha günlüğünde</a> arayın.</p></div></section>'
+    h = page("tr", "404.html", "Sayfa bulunamadı", body, extra_head='<meta name="robots" content="noindex">' + js)
+    h = h.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<base href="/">', 1)
     SITEMAP.remove("404.html")
-    # 404 her derinlikte çalışsın diye mutlak yollar
-    h = h.replace('href="assets/', 'href="/assets/').replace('src="assets/', 'src="/assets/').replace('href="favicon', 'href="/favicon')
     open(OUT + "404.html", "w", encoding="utf-8").write(h)
+    return len(m)
 
 def build_meta():
     urls = "".join(f"<url><loc>{SITE['url']}/{p}</loc><lastmod>{TODAY}</lastmod></url>" for p in sorted(set(SITEMAP)))
@@ -784,8 +807,8 @@ def main():
         build_about(lang, pages); build_research(lang, posts, caves)
         build_reports(lang); build_publications(lang); build_inventory(lang, caves); build_contact(lang); build_identity(lang)
     build_join(pages); build_journal(posts); build_pages(pages, caves); build_quiz()
-    n = build_redirects(); build_404(); build_meta()
-    print("posts", len(posts), "pages", len(pages), "caves", len(caves), "redirects", n, "urls", len(set(SITEMAP)))
+    n = build_redirects(); n404 = build_404(); build_meta(); open(OUT + 'CNAME', 'w').write(SITE['url'].split('//')[1] + '\n')
+    print("posts", len(posts), "pages", len(pages), "caves", len(caves), "redirects", n, "404-map", n404, "urls", len(set(SITEMAP)))
 
 if __name__ == "__main__":
     main()
