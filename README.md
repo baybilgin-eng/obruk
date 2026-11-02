@@ -3,7 +3,7 @@
 Statik site (HTML/CSS/JS). Sunucu, veritabanı veya eklenti gerektirmez; GitHub Pages üzerinde çalışır. Harita dahil hiçbir bileşen harici servis ya da API anahtarı gerektirmez.
 
 ## Klasör yapısı
-- `index.html`, `hakkimizda/`, `magaracilar/`, `arastirmalar/`, `raporlar/`, `yayinlar/`, `magara-envanteri/`, `saha-gunlugu/`, `iletisim/` … Türkçe sayfalar
+- `index.html`, `hakkimizda/`, `arastirmalar/`, `raporlar/`, `yayinlar/`, `magara-envanteri/`, `saha-gunlugu/`, `iletisim/` … Türkçe sayfalar
 - `en/` … İngilizce temel sayfalar
 - Önceki sitedeki yazı adresleri korunur (`/kayseri-23-calisma-koramaz-vadisi/` gibi); taşınan sayfa adresleri yeni sayfalara yönlenir.
 - `assets/` stil, betik, harita kütüphanesi (Leaflet) ve Türkiye sınırları · `img/` saha fotoğrafları, logo, PDF kapakları · `medya/` yazı görselleri (WebP) · `pdf/` raporlar ve yayınlar

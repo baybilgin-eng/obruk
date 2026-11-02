@@ -171,8 +171,8 @@ def page(lang, path, title, body, desc="", current="", alt=None, og_img=None, js
     css = rel(path, "assets/site.css"); js = rel(path, "assets/site.js")
     home = rel(path, "en/" if lang == "en" else "")
     sw_code, sw_label = u["switch"]
-    foot_links = [("hakkimizda", "Hakkımızda"), ("magaracilar", "Mağaracılar"), ("arastirmalar", "Araştırmalar"), ("raporlar", "Raporlar"), ("yayinlar", "Yayınlar"), ("katil", "Bize katılın"), ("kurumsal-kimlik", "Logo ve kurumsal kimlik"), ("iletisim", "İletişim")] if lang == "tr" else \
-                 [("en/about", "About"), ("en/cavers", "Cavers"), ("en/research", "Research"), ("en/reports", "Reports"), ("en/publications", "Publications"), ("en/inventory", "Cave inventory"), ("en/brand", "Logo and brand"), ("en/contact", "Contact")]
+    foot_links = [("hakkimizda", "Hakkımızda"), ("arastirmalar", "Araştırmalar"), ("raporlar", "Raporlar"), ("yayinlar", "Yayınlar"), ("katil", "Bize katılın"), ("kurumsal-kimlik", "Logo ve kurumsal kimlik"), ("iletisim", "İletişim")] if lang == "tr" else \
+                 [("en/about", "About"), ("en/research", "Research"), ("en/reports", "Reports"), ("en/publications", "Publications"), ("en/inventory", "Cave inventory"), ("en/brand", "Logo and brand"), ("en/contact", "Contact")]
     foot_links2 = [("magara-envanteri", "Mağara envanteri"), ("saha-gunlugu", "Saha günlüğü"), ("bilgi-bankasi", "Bilgi bankası"), ("koruma", "Koruma ve etik"), ("magaracilik-sinavi", "Mağaracılık sınavı"), ("en", "English")] if lang == "tr" else \
                   [("", "Türkçe site"), ("saha-gunlugu", "Field journal (TR)"), ("magaracilik-sinavi", "Caving quiz (TR)")]
     fl = "".join(f'<li><a href="{rel(path, s + "/" if s else "")}">{E(l)}</a></li>' for s, l in foot_links)
@@ -225,7 +225,7 @@ def page(lang, path, title, body, desc="", current="", alt=None, og_img=None, js
     <div><h2 class="foot-h">{'Kurum' if lang=='tr' else 'Group'}</h2><ul>{fl}</ul></div>
     <div><h2 class="foot-h">{'Arşiv' if lang=='tr' else 'Archive'}</h2><ul>{fl2}</ul></div>
   </div>
-  <div class="wrap foot-bottom"><span>© 2008–{year} OBRUK Mağara Araştırma Grubu</span><span>{'Kurucu' if lang=='tr' else 'Founder'}: Ali Yamaç</span></div>
+  <div class="wrap foot-bottom"><span>© 2008–{year} OBRUK Mağara Araştırma Grubu</span><span><a href="mailto:ayamac@gmail.com">ayamac@gmail.com</a></span></div>
 </footer>
 <script src="{js}" defer></script>
 </body>
@@ -236,11 +236,17 @@ def write(path, html_str):
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, "w", encoding="utf-8").write(html_str)
 
+BANNERS = json.load(open("/home/claude/work/banners.json"))
+def banner_attr(path):
+    lst = [rel(path, b) for b in BANNERS]
+    first = lst[sum(map(ord, path)) % len(lst)]
+    return first, E(json.dumps(lst))
+
 def page_head(kicker, title, lead="", img=None, path=""):
     bg = ""
     if img:
-        im = IMG.get(img)
-        if im: bg = f' style="--bg:url(\'{rel(path, im["src"])}\')"'
+        first, lst = banner_attr(path)
+        bg = f' style="--bg:url(\'{first}\')" data-banners="{lst}"'
     cls = "page-head has-img" if bg else "page-head"
     return f'<section class="{cls}"{bg}><div class="wrap"><p class="kicker">{E(kicker)}</p><h1>{E(title)}</h1>{f"<p class=\"lead\">{lead}</p>" if lead else ""}</div></section>'
 
@@ -366,9 +372,9 @@ def build_home(lang, posts, caves, members):
         quote = None
         join_t, join_p, join_b = "A strong OBRUK for the next generation of cavers", "OBRUK grows with every new caver who surveys, draws, writes and shares. Would you like to join our fieldwork or contribute to the maps and the magazine?", ("Get in touch", "en/contact/")
     posts_sec = f'''<section class="sec"><div class="wrap"><div class="sec-head"><h2>Saha günlüğünden</h2><a class="more" href="{rel(path, 'saha-gunlugu/')}">{UI[lang]['all_posts']} →</a></div><div class="grid g3">{latest}</div></div></section>''' if lang == "tr" else ""
-    quote_html = f'<blockquote class="founder-quote"><p>“{E(quote)}”</p><cite>Ali Yamaç, <a href="{rel(path, "hakkimizda/")}#kurucunun-kaleminden">Hakkımızda</a></cite></blockquote>' if quote else ""
+    quote_html = f'<blockquote class="founder-quote"><p>“{E(quote)}”</p><cite>OBRUK, <a href="{rel(path, "hakkimizda/")}#kendi-kalemimizden">Hakkımızda</a></cite></blockquote>' if quote else ""
     body = f'''
-<section class="hero"><img class="hero-img" src="{rel(path, hero['src'])}" alt="" fetchpriority="high"><div class="hero-shade"></div>
+<section class="hero"><img class="hero-img" src="{banner_attr(path)[0]}" data-banners="{banner_attr(path)[1]}" alt="" fetchpriority="high"><div class="hero-shade"></div>
 <div class="wrap hero-in"><p class="kicker">{'Mağara Araştırma Grubu · 2008’den beri' if lang=='tr' else 'Cave Research Group · since 2008'}</p><h1>{E(h1)}</h1><p class="lead">{E(lead)}</p><div class="cta"><a class="btn btn-primary" href="{rel(path, c1[1])}">{E(c1[0])}</a><a class="btn btn-ghost" href="{rel(path, c2[1])}">{E(c2[0])}</a></div></div></section>
 <section class="stats"><div class="wrap stats-in">{st}</div></section>
 <section class="sec"><div class="wrap"><div class="sec-head"><h2>{'Ne yapıyoruz?' if lang=='tr' else 'What we do'}</h2></div><div class="grid g3 whats">{whtml}</div></div></section>
@@ -379,9 +385,9 @@ def build_home(lang, posts, caves, members):
 <section class="join"><div class="wrap join-in">{quote_html}<div class="join-box"><h2>{E(join_t)}</h2><p>{E(join_p)}</p><a class="btn btn-dark" href="{rel(path, join_b[1])}">{E(join_b[0])}</a></div></div></section>'''
     jsonld = {"@context": "https://schema.org", "@type": "Organization", "name": SITE["name_" + lang], "alternateName": ["OBRUK", "o'mag", "Obruk Mağara Araştırma Grubu"],
               "url": SITE["url"] + "/" + path, "logo": SITE["url"] + "/img/logo.png", "email": SITE["email"], "foundingDate": "2008", "foundingLocation": "İstanbul",
-              "founder": {"@type": "Person", "name": "Ali Yamaç"}, "nonprofitStatus": "Nonprofit",
+              "nonprofitStatus": "Nonprofit",
               "description": lead, "knowsAbout": ["Speleology", "Cave survey", "Underground cities", "Cappadocia", "Cave conservation"]}
-    write(path, page(lang, path, "", body, current="", alt=("en/" if lang == "tr" else ""), og_img=hero["src"], jsonld=jsonld, body_class="home"))
+    write(path, page(lang, path, "", body, current="", alt=("en/" if lang == "tr" else ""), og_img="img/og.jpg", jsonld=jsonld, body_class="home"))
 
 def build_about(lang, pages):
     path = "hakkimizda/" if lang == "tr" else "en/about/"
@@ -395,16 +401,15 @@ def build_about(lang, pages):
     founder_html = ""
     if lang == "tr":
         h = pages["sayfalar/hakkimizda.md"]
-        founder_html = f'<section class="sec sec-alt" id="kurucunun-kaleminden"><div class="wrap narrow"><p class="kicker">Kurucunun kaleminden</p><h2>“Bu küçük grubun şaşkın üyeleri…”</h2><div class="prose founder">{md_to_html(h["body"], path)}</div></div></section>'
+        founder_html = f'<section class="sec sec-alt" id="kendi-kalemimizden"><div class="wrap narrow"><p class="kicker">Kendi kalemimizden</p><h2>“Bu küçük grubun şaşkın üyeleri…”</h2><div class="prose founder">{md_to_html(h["body"], path)}</div></div></section>'
     else:
-        founder_html = f'<section class="sec sec-alt"><div class="wrap narrow"><p class="kicker">Founder</p><h2>Ali Yamaç</h2><div class="prose"><p>OBRUK was founded by caver and researcher Ali Yamaç, who leads the group\'s underground heritage inventories and edits OBRUK Magazine. His tongue-in-cheek self-portrait of the group, in Turkish, can be read on the <a href="{rel(path, "hakkimizda/")}#kurucunun-kaleminden">Turkish About page</a>.</p></div></div></section>'
+        founder_html = ''
     body = page_head("OBRUK" if lang == "tr" else "OBRUK", "Hakkımızda" if lang == "tr" else "About us",
                      "2008'den bu yana Anadolu'nun yeraltını belgeleyen, kâr amacı gütmeyen gönüllü mağaracılar topluluğu." if lang == "tr" else "A volunteer, non-profit community of cavers documenting Anatolia's underground since 2008.",
                      "ek foto/20241013_122511.jpg", path) + f'''
-<section class="sec"><div class="wrap two-col"><div class="prose">{ABOUT_TR if lang=='tr' else ABOUT_EN}<p>{'Grubun kurucusu' if lang=='tr' else 'The group was founded by'} <strong>Ali Yamaç</strong>{'tır.' if lang=='tr' else '.'}</p></div>
+<section class="sec"><div class="wrap two-col"><div class="prose">{ABOUT_TR if lang=='tr' else ABOUT_EN}</div>
 <aside class="facts"><h2>{'Kısaca OBRUK' if lang=='tr' else 'OBRUK at a glance'}</h2><dl>
 <dt>{'Kuruluş' if lang=='tr' else 'Founded'}</dt><dd>{'2008, İstanbul' if lang=='tr' else '2008, Istanbul'}</dd>
-<dt>{'Kurucu' if lang=='tr' else 'Founder'}</dt><dd>Ali Yamaç</dd>
 <dt>{'Yapı' if lang=='tr' else 'Status'}</dt><dd>{'Kâr amacı gütmeyen gönüllü sivil oluşum' if lang=='tr' else 'Volunteer, non-profit civic group'}</dd>
 <dt>{'Odak' if lang=='tr' else 'Focus'}</dt><dd>{'Mağara keşfi ve haritalama, yeraltı yapıları envanteri, yayın' if lang=='tr' else 'Cave exploration and survey, underground heritage inventories, publishing'}</dd>
 <dt>{'Yayın' if lang=='tr' else 'Publication'}</dt><dd>{'OBRUK Dergisi (7 sayı)' if lang=='tr' else 'OBRUK Magazine (7 issues)'}</dd>
@@ -728,7 +733,7 @@ def build_quiz():
 
 def build_redirects():
     """Eski adresler: yeni sayfaya yönlendirme."""
-    simple = {"projeler": "arastirmalar/", "bize-ulasin": "iletisim/", "magara-haritasi": "magara-envanteri/", "yayinlanmis-sayilar": "yayinlar/#dergi",
+    simple = {"magaracilar": "hakkimizda/", "en/cavers": "en/about/", "projeler": "arastirmalar/", "bize-ulasin": "iletisim/", "magara-haritasi": "magara-envanteri/", "yayinlanmis-sayilar": "yayinlar/#dergi",
               "sempozyum-bildiri-poster": "yayinlar/#bildiri", "dergi-yazilari": "yayinlar/#basin", "dergi": "yayinlar/", "calismalar": "arastirmalar/",
               "eglencelik": "bilgi-bankasi/", "meraklisina": "bilgi-bankasi/", "nostalji": "bilgi-bankasi/", "etkinlikler-takvimi": "saha-gunlugu/",
               "haberler": "saha-gunlugu/", "obruk-sayi-1": "yayinlar/#dergi", "gelecek-sayi": "yayinlar/#dergi", "egitim-programlari": "katil/",
@@ -776,7 +781,7 @@ def main():
     posts = load_posts(); pages = load_pages(); caves = load_caves()
     for lang in ("tr", "en"):
         build_home(lang, posts, caves, None)
-        build_about(lang, pages); build_members(lang, caves, posts); build_research(lang, posts, caves)
+        build_about(lang, pages); build_research(lang, posts, caves)
         build_reports(lang); build_publications(lang); build_inventory(lang, caves); build_contact(lang); build_identity(lang)
     build_join(pages); build_journal(posts); build_pages(pages, caves); build_quiz()
     n = build_redirects(); build_404(); build_meta()

@@ -293,7 +293,7 @@ MEMBER_EXCLUDE = {"-", "Arda", "C. Chabert", "Fadi Nader", ""}
 UI = {
     "tr": {
         "lang": "tr", "locale": "tr_TR", "skip": "İçeriğe geç",
-        "nav": [("hakkimizda", "Hakkımızda"), ("magaracilar", "Mağaracılar"), ("arastirmalar", "Araştırmalar"),
+        "nav": [("hakkimizda", "Hakkımızda"), ("arastirmalar", "Araştırmalar"),
                 ("raporlar", "Raporlar"), ("yayinlar", "Yayınlar"), ("arsiv", "Arşiv"), ("iletisim", "İletişim")],
         "archive_menu": [("magara-envanteri", "Mağara Envanteri"), ("saha-gunlugu", "Saha Günlüğü"),
                          ("bilgi-bankasi", "Bilgi Bankası"), ("koruma", "Koruma ve Etik"),
@@ -306,7 +306,7 @@ UI = {
     },
     "en": {
         "lang": "en", "locale": "en_GB", "skip": "Skip to content",
-        "nav": [("about", "About"), ("cavers", "Cavers"), ("research", "Research"),
+        "nav": [("about", "About"), ("research", "Research"),
                 ("reports", "Reports"), ("publications", "Publications"), ("inventory", "Cave Inventory"), ("contact", "Contact")],
         "archive_menu": [],
         "tagline": "Cave Research Group",

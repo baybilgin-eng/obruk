@@ -3,6 +3,10 @@
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   var trLower=function(s){return (s||"").replace(/I/g,"ı").replace(/İ/g,"i").toLowerCase()};
 
+  // üst alan fotoğrafları: her açılışta rastgele
+  $$("[data-banners]").forEach(function(el){try{var l=JSON.parse(el.getAttribute("data-banners"));if(!l.length)return;var u=l[Math.floor(Math.random()*l.length)];
+    if(el.tagName==="IMG"){el.src=u}else{el.style.setProperty("--bg","url('"+u+"')")}}catch(e){}});
+
   // menü
   var mt=$(".menu-toggle");
   if(mt){mt.addEventListener("click",function(){var o=document.body.classList.toggle("menu-open");mt.setAttribute("aria-expanded",o)})}
